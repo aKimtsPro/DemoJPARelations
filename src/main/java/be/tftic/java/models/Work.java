@@ -8,6 +8,9 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "work")
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Work {
 
     @EmbeddedId

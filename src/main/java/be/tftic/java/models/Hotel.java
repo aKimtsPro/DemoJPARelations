@@ -24,8 +24,15 @@ public class Hotel {
     @Column(name = "hotel_name", nullable = false)
     private String name;
 
-    @Column(name = "hotel_address", nullable = false)
-    private String address;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "countryAdd.zipcode", column = @Column(name = "hotel_zipcode")),
+            @AttributeOverride(name = "countryAdd.city", column = @Column(name = "hotel_city")),
+            @AttributeOverride(name = "countryAdd.street", column = @Column(name = "hotel_street")),
+            @AttributeOverride(name = "countryAdd.number", column = @Column(name = "hotel_number")),
+            @AttributeOverride(name = "country", column = @Column(name = "hotel_country"))
+    })
+    private Address address;
 
     @OneToMany(mappedBy = "hotel")
     private List<Room> rooms;
@@ -39,7 +46,7 @@ public class Hotel {
     private List<Employe> employes;
 
     @OneToOne
-    @JoinColumn(name = "director_id", nullable = false)
+    @JoinColumn(name = "hotel_director_id", nullable = false)
     private Employe director;
 
 }

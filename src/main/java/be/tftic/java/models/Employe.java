@@ -13,17 +13,12 @@ import java.util.List;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employe {
+@PrimaryKeyJoinColumn(name = "employe_id")
+//@DiscriminatorValue("EMPLOYE")
+public class Employe extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employe_id")
-    private Long id;
-
-    @Column(name = "employe_username", nullable = false)
-    private String username;
-    @Column(name = "employe_password", nullable = false)
-    private String password;
+    @Column(name = "employe_salary")
+    private double salary;
 
     @ManyToMany(mappedBy = "employes")
     private List<Hotel> hotels;
