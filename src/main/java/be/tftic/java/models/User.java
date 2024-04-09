@@ -11,8 +11,12 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "user_role" /*, discriminatorType = DiscriminatorType.STRING (default) */)
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name = "user_role" /*, discriminatorType = DiscriminatorType.STRING (default) */)
+@AttributeOverrides({ // override de BaseEntity
+        @AttributeOverride(name = "createdAt", column = @Column(name = "user_created_at", nullable = false)),
+        @AttributeOverride(name = "lastUpdateAt", column = @Column(name = "user_last_update_at"))
+})
 public abstract class User extends BaseEntity<Long> {
 
     @Id
