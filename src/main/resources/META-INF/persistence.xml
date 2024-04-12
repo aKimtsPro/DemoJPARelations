@@ -10,7 +10,9 @@
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+<!--            <property name="hibernate.physical_naming_strategy" value="be.tftic.java.utils.CustomNamingStrat"/>-->
         </properties>
     </persistence-unit>
 </persistence>

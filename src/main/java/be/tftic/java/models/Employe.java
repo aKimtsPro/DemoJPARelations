@@ -20,10 +20,11 @@ public class Employe extends User {
     @Column(name = "employe_salary")
     private double salary;
 
-    @ManyToMany(mappedBy = "employes")
-    private List<Hotel> hotels;
+    @OneToMany(mappedBy = "employe")
+    private List<Work> works;
 
     @OneToOne(mappedBy = "director")
     private Hotel directedHotel;
+
 
 }

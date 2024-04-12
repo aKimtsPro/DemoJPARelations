@@ -26,5 +26,11 @@ public class Work {
 
     private int hours;
 
-
+    @Override
+    public String toString() {
+        return "Work{" +
+                "id=" + id +
+                ", hours=" + hours +
+                '}';
+    }
 }

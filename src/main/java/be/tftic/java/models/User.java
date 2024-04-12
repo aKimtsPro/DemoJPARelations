@@ -28,4 +28,12 @@ public abstract class User extends BaseEntity<Long> {
     @Column(name = "user_password", nullable = false)
     private String password;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

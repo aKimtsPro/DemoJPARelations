@@ -1,28 +1,27 @@
 package be.tftic.java;
 
 import be.tftic.java.models.Employe;
-import jakarta.persistence.Entity;
+import be.tftic.java.models.Employe_;
+import be.tftic.java.models.Hotel;
+import be.tftic.java.repository.EmployeRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.criteria.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hotel_db");
 
-        Employe employe = new Employe();
-        employe.setUsername("test");
-        employe.setPassword("test");
-        employe.setSalary(2000);
+        EmployeRepository repo = new EmployeRepository(emf);
 
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(employe);
-        em.getTransaction().commit();
+        List<Employe> employes = repo.findByWorksInCity_Criteria("Gosselies");
 
-        new Scanner(System.in).nextLine();
+        employes.forEach(System.out::println);
+
         emf.close();
     }
 }
